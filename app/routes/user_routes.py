@@ -24,13 +24,28 @@ def get_user(user_id):
     return jsonify(user), 200
 
 
+# @user_bp.route("", methods=["POST"])
+# def create():
+#     data = request.get_json()
+
+#     if not data or "name" not in data:
+#         return jsonify({"error": "name is required"}), 400
+#     user = create_user(data)
+#     return jsonify(user), 201
+
+
 @user_bp.route("", methods=["POST"])
 def create():
     data = request.get_json()
 
     if not data or "name" not in data:
         return jsonify({"error": "name is required"}), 400
+
     user = create_user(data)
+
+    if user is None:
+        return jsonify({"error": "User already exists"}), 400
+
     return jsonify(user), 201
 
 
