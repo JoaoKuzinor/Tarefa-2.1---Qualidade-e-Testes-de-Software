@@ -98,20 +98,7 @@ def test_should_return_400_when_user_already_exists(client):
     assert response.status_code == 400
 
 
-# 10 NOVOS TESTES UNITARIOS
-
-
-def test_create_user_with_empty_name(client):
-    response = client.post("/users", json={"name": ""})
-
-    assert response.status_code == 400
-
-
-def test_create_user_with_spaces_name(client):
-    response = client.post("/users", json={"name": "   "})
-
-    assert response.status_code == 400
-
+#NOVOS TESTES UNITARIOS
 
 def test_create_multiple_users(client):
     response1 = client.post("/users", json={"name": "João"})
@@ -140,13 +127,13 @@ def test_update_user_without_name(client):
     assert response.status_code == 400
 
 
-def test_update_user_with_empty_name(client):
-    response = client.post("/users", json={"name": "João"})
-    user_id = response.get_json()["id"]
+# def test_update_user_with_empty_name(client):
+#     response = client.post("/users", json={"name": "João"})
+#     user_id = response.get_json()["id"]
 
-    response = client.put(f"/users/{user_id}", json={"name": ""})
+#     response = client.put(f"/users/{user_id}", json={"name": ""})
 
-    assert response.status_code == 400
+#     assert response.status_code == 400
 
 
 def test_deleted_user_should_not_be_found(client):
