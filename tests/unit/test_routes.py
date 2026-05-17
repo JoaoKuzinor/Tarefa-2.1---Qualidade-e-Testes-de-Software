@@ -98,7 +98,8 @@ def test_should_return_400_when_user_already_exists(client):
     assert response.status_code == 400
 
 
-#NOVOS TESTES UNITARIOS
+# NOVOS TESTES UNITARIOS
+
 
 def test_create_multiple_users(client):
     response1 = client.post("/users", json={"name": "João"})
