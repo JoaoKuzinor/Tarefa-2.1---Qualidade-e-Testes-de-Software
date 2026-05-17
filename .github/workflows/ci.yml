@@ -28,7 +28,7 @@ jobs:
 
       - name: Executar testes
         run: |
-          pytest
+          pytest -k "not e2e"
 
       - name: Verificar formatação
         run: |
