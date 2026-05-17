@@ -1,5 +1,6 @@
 import pytest
 from app import create_app
+from app.services import user_service
 
 # def test_health_check():
 #     app = create_app()
@@ -15,9 +16,6 @@ from app import create_app
 def client():
     app = create_app()
     return app.test_client()
-
-
-from app.services import user_service
 
 
 @pytest.fixture(autouse=True)
