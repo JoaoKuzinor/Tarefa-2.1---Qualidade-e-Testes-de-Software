@@ -22,18 +22,22 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Atualizar pip
+        run: |
+          python -m pip install --upgrade pip
+
       - name: Instalar dependências
         run: |
           pip install -r requirements.txt
 
-      - name: Executar testes
+      - name: Executar testes (sem E2E)
         run: |
           pytest -k "not e2e"
 
-      - name: Verificar formatação
+      - name: Verificar formatação (Black)
         run: |
           black --check .
 
-      - name: Verificar lint
+      - name: Verificar lint (Flake8)
         run: |
           flake8 .
